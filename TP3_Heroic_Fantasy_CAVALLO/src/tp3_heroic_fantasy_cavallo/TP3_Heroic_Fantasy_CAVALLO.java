@@ -4,6 +4,9 @@
  */
 package tp3_heroic_fantasy_cavallo;
 
+import Personnages.Personnage;
+import Personnages.Magicien;
+import Personnages.Guerrier;
 import Armes.Epee;
 import Armes.Baton;
 import Armes.Arme;
@@ -38,6 +41,26 @@ public class TP3_Heroic_Fantasy_CAVALLO {
         for (int i = 0; i < armes.size(); i++) {
             // Utilisation de la méthode toString de chaque arme pour afficher ses caractéristiques
             System.out.println(armes.get(i));
+        }
+        
+        Magicien gandalf = new Magicien("Gandalf", 65, true);  // confirmé
+        Magicien garcimore = new Magicien("Garcimore", 44, false);  // novice
+
+        Guerrier conan = new Guerrier("Conan", 78, false);  // à pied
+        Guerrier lannister = new Guerrier("Lannister", 45, true);  // à cheval
+
+        // Création d'un tableau dynamique pour stocker les personnages
+        ArrayList<Personnage> personnages = new ArrayList<>();
+
+        // Ajout des magiciens et guerriers dans le tableau dynamique
+        personnages.add(gandalf);
+        personnages.add(garcimore);
+        personnages.add(conan);
+        personnages.add(lannister);
+
+        // Affichage des caractéristiques des personnages en parcourant le tableau
+        for (Personnage personnage : personnages) {
+            System.out.println(personnage);
         }
     }
     

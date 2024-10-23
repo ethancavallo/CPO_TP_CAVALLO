@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tp3_heroic_fantasy_cavallo;
+package Personnages;
 
 /**
  *
@@ -10,7 +10,7 @@ package tp3_heroic_fantasy_cavallo;
  */
 public class Guerrier extends Personnage {
     // Attribut spécifique au Guerrier
-    private boolean aCheval;
+    boolean aCheval;
 
     // Constructeur
     public Guerrier(String nom, int niveauVie, boolean aCheval) {

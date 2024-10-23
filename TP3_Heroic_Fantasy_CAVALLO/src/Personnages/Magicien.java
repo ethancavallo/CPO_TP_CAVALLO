@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package tp3_heroic_fantasy_cavallo;
+package Personnages;
 
 /**
  *
@@ -10,7 +10,7 @@ package tp3_heroic_fantasy_cavallo;
  */
 public class Magicien extends Personnage {
     // Attribut spécifique au Magicien
-    private boolean confirme;
+    boolean confirme;
 
     // Constructeur
     public Magicien(String nom, int niveauVie, boolean confirme) {
