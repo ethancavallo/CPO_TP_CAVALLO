@@ -12,7 +12,9 @@ import java.util.ArrayList;
  * @author ethan
  */
 public abstract class Personnage {
-    // Attributs
+    static int nbPersonnages = 0;
+
+// Attributs
     String nom;
     int niveauVie;
     ArrayList<Arme> inventaire;
@@ -24,6 +26,7 @@ public abstract class Personnage {
         this.niveauVie = niveauVie;
         this.inventaire = new ArrayList<>(); 
         this.armeEnMain = null;
+        nbPersonnages++;
     }
 
     // Accesseur pour le nom du personnage
@@ -76,5 +79,9 @@ public abstract class Personnage {
     public String toString() {
         return "Personnage : " + nom + ", Niveau de vie : " + niveauVie +
                (armeEnMain != null ? ", Arme en main : " + armeEnMain : ", Pas d'arme en main.");
+    }
+    
+    public static int getNbPersonnages() {
+        return nbPersonnages;
     }
 }

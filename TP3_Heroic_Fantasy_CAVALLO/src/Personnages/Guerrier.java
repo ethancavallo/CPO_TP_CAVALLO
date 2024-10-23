@@ -12,13 +12,16 @@ import Armes.Epee;
  * @author ethan
  */
 public class Guerrier extends Personnage {
-    // Attribut spécifique au Guerrier
+    static int nbGuerriers = 0;
+
+// Attribut spécifique au Guerrier
     boolean aCheval;
 
     // Constructeur
     public Guerrier(String nom, int niveauVie, boolean aCheval) {
         super(nom, niveauVie);  // Appel du constructeur de Personnage
         this.aCheval = aCheval;
+        nbGuerriers++;
     }
 
     @Override
@@ -34,5 +37,9 @@ public class Guerrier extends Personnage {
    @Override
     public String toString() {
         return super.toString() + ", À cheval : " + aCheval;
+    }
+    
+    public static int getNbGuerriers() {
+        return nbGuerriers;
     }
 }

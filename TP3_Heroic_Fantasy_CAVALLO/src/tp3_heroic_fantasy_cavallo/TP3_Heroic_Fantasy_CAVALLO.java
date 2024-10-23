@@ -85,6 +85,10 @@ public class TP3_Heroic_Fantasy_CAVALLO {
         // Affichage des informations des personnages (avec armes équipées)
         System.out.println(conan);
         System.out.println(gandalf);
+        
+        System.out.println("\nNombre total de personnages : " + Personnage.getNbPersonnages());
+        System.out.println("Nombre total de guerriers : " + Guerrier.getNbGuerriers());
+        System.out.println("Nombre total de magiciens : " + Magicien.getNbMagiciens());
     }
     
 }

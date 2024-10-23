@@ -12,6 +12,8 @@ import Armes.Baton;
  * @author ethan
  */
 public class Magicien extends Personnage {
+    static int nbMagiciens = 0;
+
     // Attribut spécifique au Magicien
     boolean confirme;
 
@@ -19,6 +21,7 @@ public class Magicien extends Personnage {
     public Magicien(String nom, int niveauVie, boolean confirme) {
         super(nom, niveauVie);  // Appel du constructeur de Personnage
         this.confirme = confirme;
+        nbMagiciens++;
     }
 
     @Override
@@ -34,5 +37,9 @@ public class Magicien extends Personnage {
     @Override
     public String toString() {
         return super.toString() + ", Confirmé : " + confirme;
+    }
+    
+    public static int getNbMagiciens() {
+        return nbMagiciens;
     }
 }
