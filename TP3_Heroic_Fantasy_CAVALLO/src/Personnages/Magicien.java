@@ -4,6 +4,9 @@
  */
 package Personnages;
 
+import Armes.Arme;
+import Armes.Baton;
+
 /**
  *
  * @author ethan
@@ -18,19 +21,18 @@ public class Magicien extends Personnage {
         this.confirme = confirme;
     }
 
+    @Override
+    public Class<? extends Arme> typeArmePredilection() {
+        return Baton.class;  // Le magicien préfère les bâtons
+    }
+    
     // Setter pour confirme
     public void setConfirme(boolean confirme) {
         this.confirme = confirme;
     }
 
-    // Getter pour confirme
-    public boolean isConfirme() {
-        return confirme;
-    }
-
-    // Méthode toString redéfinie pour inclure confirme
     @Override
     public String toString() {
-        return super.toString() + ", Confirmé : " + (confirme ? "Oui" : "Non");
+        return super.toString() + ", Confirmé : " + confirme;
     }
 }

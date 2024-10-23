@@ -4,6 +4,9 @@
  */
 package Personnages;
 
+import Armes.Arme;
+import java.util.ArrayList;
+
 /**
  *
  * @author ethan
@@ -12,11 +15,15 @@ public abstract class Personnage {
     // Attributs
     String nom;
     int niveauVie;
-
+    ArrayList<Arme> inventaire;
+    Arme armeEnMain = null;
+    
     // Constructeur
     public Personnage(String nom, int niveauVie) {
         this.nom = nom;
         this.niveauVie = niveauVie;
+        this.inventaire = new ArrayList<>(); 
+        this.armeEnMain = null;
     }
 
     // Accesseur pour le nom du personnage
@@ -29,9 +36,45 @@ public abstract class Personnage {
         return niveauVie;
     }
 
-    // Méthode toString redéfinie pour afficher le nom et le niveau de vie
+    public void ajouterArme(Arme arme) {
+        if (inventaire.size() < 5) {
+            inventaire.add(arme);
+            System.out.println(arme.getNom() + " a été ajoutée à l'inventaire.");
+        } else {
+            System.out.println("Inventaire plein, impossible d'ajouter une autre arme.");
+        }
+    }
+    
+    public Arme getArmeEnMain() {
+        return armeEnMain;
+    }
+    
+    public void equiperArme(String nomArme) {
+        for (Arme arme : inventaire) {
+            if (arme.getNom().equals(nomArme)) {
+                armeEnMain = arme;
+                System.out.println(nomArme + " est maintenant équipée.");
+                return;
+            }
+        }
+        System.out.println("L'arme " + nomArme + " n'est pas dans l'inventaire.");
+    }
+    
+    public abstract Class<? extends Arme> typeArmePredilection();
+
+    public int compterArmesPredilection() {
+        int count = 0;
+        for (Arme arme : inventaire) {
+            if (typeArmePredilection().isInstance(arme)) {
+                count++;
+            }
+        }
+        return count;
+    }
+    
     @Override
     public String toString() {
-        return "Personnage : " + nom + ", Niveau de vie : " + niveauVie;
+        return "Personnage : " + nom + ", Niveau de vie : " + niveauVie +
+               (armeEnMain != null ? ", Arme en main : " + armeEnMain : ", Pas d'arme en main.");
     }
 }

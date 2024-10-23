@@ -22,13 +22,16 @@ public class TP3_Heroic_Fantasy_CAVALLO {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Création des armes
         Epee excalibur = new Epee("Excalibur", 7, 5);
         Epee durandal = new Epee("Durandal", 4, 7);
-        
+        Epee katana = new Epee("Katana", 5, 9);
+
         Baton chene = new Baton("Chene", 4, 5);
         Baton charme = new Baton("Charme", 5, 6);
-        
-        // Création d'un tableau dynamique avec ArrayList pour stocker les armes
+        Baton saule = new Baton("Saule", 6, 7);
+
+        // Création d'un tableau dynamique pour stocker les armes
         ArrayList<Arme> armes = new ArrayList<>();
 
         // Ajout des épées et des bâtons dans le tableau dynamique
@@ -39,10 +42,10 @@ public class TP3_Heroic_Fantasy_CAVALLO {
 
         // Affichage des caractéristiques des armes en parcourant le tableau
         for (int i = 0; i < armes.size(); i++) {
-            // Utilisation de la méthode toString de chaque arme pour afficher ses caractéristiques
-            System.out.println(armes.get(i));
+            System.out.println(armes.get(i));  // Utilisation de toString
         }
-        
+
+        // Création des personnages (Magiciens et Guerriers)
         Magicien gandalf = new Magicien("Gandalf", 65, true);  // confirmé
         Magicien garcimore = new Magicien("Garcimore", 44, false);  // novice
 
@@ -60,8 +63,28 @@ public class TP3_Heroic_Fantasy_CAVALLO {
 
         // Affichage des caractéristiques des personnages en parcourant le tableau
         for (Personnage personnage : personnages) {
-            System.out.println(personnage);
+            System.out.println(personnage);  // Utilisation de toString
         }
+
+        // Ajout des armes à l'inventaire de Conan
+        conan.ajouterArme(chene);
+        conan.ajouterArme(excalibur);
+        conan.ajouterArme(durandal);
+
+        // Équipement de Conan avec la première épée "Excalibur"
+        conan.equiperArme("Excalibur");
+
+        // Ajout des armes à l'inventaire de Gandalf
+        gandalf.ajouterArme(charme);
+        gandalf.ajouterArme(saule);
+        gandalf.ajouterArme(katana);
+
+        // Affichage du nombre d'armes préférées (bâtons) de Gandalf
+        System.out.println("Le magicien " + gandalf.getNom() + " possède " + gandalf.compterArmesPredilection() + " bâtons.");
+
+        // Affichage des informations des personnages (avec armes équipées)
+        System.out.println(conan);
+        System.out.println(gandalf);
     }
     
 }
