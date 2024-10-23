@@ -29,6 +29,14 @@ public abstract class Personnage {
         nbPersonnages++;
     }
 
+    @Override
+    protected void finalize() throws Throwable {  // **Ajout de la méthode finalize**
+        // Décrémenter le nombre de personnages lors de la destruction
+        nbPersonnages--;
+        System.out.println("Un personnage a été détruit. Il reste " + nbPersonnages + " personnages.");  // **Affichage d'un message**
+        super.finalize();  // **Appel au destructeur de la classe parente**
+    }
+    
     // Accesseur pour le nom du personnage
     public String getNom() {
         return nom;

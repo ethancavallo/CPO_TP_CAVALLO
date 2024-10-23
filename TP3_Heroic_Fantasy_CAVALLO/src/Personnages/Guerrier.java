@@ -25,8 +25,27 @@ public class Guerrier extends Personnage {
     }
 
     @Override
+    protected void finalize() throws Throwable {  // **Ajout de la méthode finalize**
+        // Décrémenter le nombre de guerriers lors de la destruction
+        nbGuerriers--;
+        System.out.println("Un guerrier a été détruit. Il reste " + nbGuerriers + " guerriers.");  // **Affichage d'un message**
+        super.finalize();  // **Appel au destructeur de la classe parente**
+    }
+    
+    @Override
     public Class<? extends Arme> typeArmePredilection() {
         return Epee.class;  // Le guerrier préfère les épées
+    }
+    
+    @Override
+    public int compterArmesPredilection() {
+        int count = 0;
+        for (Arme arme : super.inventaire) {
+            if (arme instanceof Epee) {
+                count++;
+            }
+        }
+        return count;  // Nombre d'épées dans l'inventaire
     }
     
     // Setter pour aCheval
