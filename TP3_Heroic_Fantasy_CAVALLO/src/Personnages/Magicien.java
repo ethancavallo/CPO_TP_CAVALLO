@@ -48,10 +48,9 @@ public class Magicien extends Personnage {
         return count;  // Nombre de bâtons dans l'inventaire
     }
     
-    // Setter pour confirme
-    public void setConfirme(boolean confirme) {
-        this.confirme = confirme;
-    }
+    public boolean isConfirme() {
+    return confirme;  // retourne true si le magicien est confirmé
+}
 
     @Override
     public String toString() {
@@ -60,5 +59,11 @@ public class Magicien extends Personnage {
     
     public static int getNbMagiciens() {
         return nbMagiciens;
+    }
+    
+    @Override
+    public void attaquer(Personnage cible) {
+        System.out.println(nom + " attaque " + cible.getNom() + " et inflige 20 points de dégâts.");
+        cible.estAttaque(20);
     }
 }

@@ -48,10 +48,9 @@ public class Guerrier extends Personnage {
         return count;  // Nombre d'épées dans l'inventaire
     }
     
-    // Setter pour aCheval
-    public void setACheval(boolean aCheval) {
-        this.aCheval = aCheval;
-    }
+    public boolean isACheval() {
+    return aCheval;  // retourne true si le guerrier est à cheval
+}
 
    @Override
     public String toString() {
@@ -60,5 +59,11 @@ public class Guerrier extends Personnage {
     
     public static int getNbGuerriers() {
         return nbGuerriers;
+    }
+    
+    @Override
+    public void attaquer(Personnage cible) {
+        System.out.println(nom + " attaque " + cible.getNom() + " et inflige 30 points de dégâts.");
+        cible.estAttaque(30);
     }
 }

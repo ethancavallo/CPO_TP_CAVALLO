@@ -89,6 +89,66 @@ public class TP3_Heroic_Fantasy_CAVALLO {
         System.out.println("\nNombre total de personnages : " + Personnage.getNbPersonnages());
         System.out.println("Nombre total de guerriers : " + Guerrier.getNbGuerriers());
         System.out.println("Nombre total de magiciens : " + Magicien.getNbMagiciens());
+        
+        // 54.
+
+        System.out.println("\n\n\n\nCaractéristiques des personnages créés :");
+        System.out.println(conan);
+        System.out.println(gandalf);
+
+        System.out.println("Nombre total de personnages : " + Personnage.getNbPersonnages());
+        System.out.println("Nombre de guerriers : " + Guerrier.getNbGuerriers());
+        System.out.println("Nombre de magiciens : " + Magicien.getNbMagiciens());
+
+        // 55. Fatiguez le guerrier.
+        conan.seFatiguer();
+
+        // 56. Afficher toutes les caractéristiques du guerrier et vérifier (par un message) s'il est toujours vivant.
+        System.out.println("Caractéristiques de Conan après s'être fatigué :");
+        System.out.println(conan);
+        System.out.println("Conan est toujours vivant : " + (conan.estVivant() ? "Oui" : "Non"));
+
+        // 57. Faire en sorte que le magicien soit victime d'une attaque de la part du guerrier et afficher leurs caractéristiques.
+        conan.attaquer(gandalf);
+
+        System.out.println("Caractéristiques après l'attaque de Conan sur Gandalf :");
+        System.out.println(conan);
+        System.out.println(gandalf+"\n\n");
+        
+        // Étapes 59 & 60 : Création des armes ( déjà fait )
+
+        // Étapes 61 & 62 : Création d'un magicien non confirmé et d'un guerrier à cheval
+        Magicien magicien = new Magicien("Merlin", 50, false); // non confirmé
+        Guerrier guerrier = new Guerrier("Arthur", 70, true); // à cheval
+
+        // Attribution d'une épée et d'un bâton à chacun
+        magicien.ajouterArme(excalibur);
+        magicien.ajouterArme(chene);
+        
+        guerrier.ajouterArme(durandal);
+        guerrier.ajouterArme(charme);
+
+        // Étape 63 : Choix d'une arme pour chaque personnage
+        magicien.equiperArme("Excalibur"); // Le magicien utilise l'épée "Excalibur"
+        guerrier.equiperArme("Durandal");  // Le guerrier utilise l'épée "Durandal"
+
+        // Étape 64 : Le magicien attaque le guerrier
+        magicien.attaquer(guerrier);
+
+        // Affichage des caractéristiques après l'attaque du magicien
+        System.out.println(magicien);
+        System.out.println(guerrier);
+
+        // Étape 65 : Le guerrier attaque le magicien
+        guerrier.attaquer(magicien);
+
+        // Affichage des caractéristiques après l'attaque du guerrier
+        System.out.println(magicien);
+        System.out.println(guerrier);
+
+        // Étape 66 : Test si les personnages sont vivants
+        System.out.println("Le magicien est-il vivant ? " + (magicien.estVivant() ? "Oui" : "Non"));
+        System.out.println("Le guerrier est-il vivant ? " + (guerrier.estVivant() ? "Oui" : "Non"));
     }
     
 }

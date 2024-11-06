@@ -5,13 +5,16 @@
 package Personnages;
 
 import Armes.Arme;
+import Armes.Baton;
+import Armes.Epee;
 import java.util.ArrayList;
+import tp3_heroic_fantasy_cavallo.etreVivant;
 
 /**
  *
  * @author ethan
  */
-public abstract class Personnage {
+public abstract class Personnage implements etreVivant {
     static int nbPersonnages = 0;
 
 // Attributs
@@ -19,6 +22,7 @@ public abstract class Personnage {
     int niveauVie;
     ArrayList<Arme> inventaire;
     Arme armeEnMain = null;
+    private boolean vivant = true; // Pour garder l'état de vie du personnage
     
     // Constructeur
     public Personnage(String nom, int niveauVie) {
@@ -91,5 +95,55 @@ public abstract class Personnage {
     
     public static int getNbPersonnages() {
         return nbPersonnages;
+    }
+    
+    @Override
+    public void seFatiguer() {
+        niveauVie -= 10;
+        System.out.println(nom + " se fatigue et perd 10 points de vie.");
+    }
+
+    @Override
+    public boolean estVivant() {
+        return niveauVie > 0;
+    }
+
+    @Override
+    public void estAttaque(int points) {
+        niveauVie -= points;
+        System.out.println(nom + " est attaqué et perd " + points + " points de vie.");
+    }
+    
+    // Méthode pour attaquer un autre personnage
+    public void attaquer(Personnage adversaire) {
+        if (this.armeEnMain == null) {
+            System.out.println(this.nom + " n'a pas d'arme équipée et ne peut pas attaquer.");
+            return;
+        }
+
+        int degats = this.armeEnMain.getNiveauAttaque();
+
+        // Cas où le personnage est un Magicien
+        if (this instanceof Magicien && armeEnMain instanceof Baton) {
+            Baton baton = (Baton) armeEnMain;
+            degats *= baton.getAge();
+            seFatiguer(); // Le magicien se fatigue en attaquant
+        }
+
+        // Cas où le personnage est un Guerrier
+        else if (this instanceof Guerrier && armeEnMain instanceof Epee) {
+            Epee epee = (Epee) armeEnMain;
+            degats *= epee.getFinesse();
+            seFatiguer(); // Le guerrier se fatigue en attaquant
+        }
+
+        if ((this instanceof Magicien && ((Magicien) this).isConfirme()) ||
+        (this instanceof Guerrier && ((Guerrier) this).isACheval())) {
+        degats /= 2;
+        }
+
+        // Appliquer les dégâts à l'adversaire
+        adversaire.estAttaque(degats);
+        System.out.println(this.nom + " a attaqué " + adversaire.getNom() + " et lui a infligé " + degats + " points de dégâts.");
     }
 }
